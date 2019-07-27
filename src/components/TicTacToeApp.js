@@ -13,6 +13,7 @@ class TicTacToeApp extends React.Component {
 
   giveInput=(blockNumber) => {
     if (!this.state.winner && this.state.totalTries < 9) {
+      if(this.state.gameStatus[blockNumber]==null){
       const valueToFill = this.state.yourTurn ? '0' : 'X';
       const newGameStatus = this.state.gameStatus;
       newGameStatus[blockNumber] = valueToFill;
@@ -22,7 +23,7 @@ class TicTacToeApp extends React.Component {
           yourTurn: !prevState.yourTurn,
           totalTries: prevState.totalTries + 1,
         }), () => this.decideWinner(this.state.gameStatus));
-    } else {
+     }} else {
       this.startGameAgain();
     }
   }
